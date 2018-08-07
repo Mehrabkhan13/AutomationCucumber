@@ -35,7 +35,6 @@ public class FlightSearchTest extends CommonActions{
 		searchResultPageObjects=PageFactory.initElements(driver, SearchResultPageObjects.class);
 		
 		excelUtils=new ExcelUtils(getData("TESTDATA_PATH"));
-		
 	}
 
 	@Given("Navigated to flight search page for one way search.")
@@ -70,7 +69,7 @@ public class FlightSearchTest extends CommonActions{
 		
 		waitForPageLoad(searchResultPageObjects.allFlightTxtLabel);
 		
-		commonActions.selectOneWayMinPrice1(searchResultPageObjects.oneWayPriceTexts,searchResultPageObjects.bookingBtn);
+		commonActions.selectOneWayMinPrice(searchResultPageObjects.oneWayPriceTexts,searchResultPageObjects.bookingBtn);
 
 		commonActions.addLuggage(searchResultPageObjects.addBaggageBtn,"modal_window",searchResultPageObjects.addBaggageItem,
 				searchResultPageObjects.addBaggageDoneBtn);
@@ -233,7 +232,6 @@ public class FlightSearchTest extends CommonActions{
 		
 		commonActions.enterText(departDateElement,departDate);
 	}
-	
 	
 	@After
 	public void tearDown() {

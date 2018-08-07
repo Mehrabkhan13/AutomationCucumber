@@ -3,15 +3,12 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.ListIterator;
 import java.util.NoSuchElementException;
 import java.util.Properties;
-import java.util.Random;
 import java.util.concurrent.TimeUnit;
 import java.util.stream.Collectors;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -100,7 +97,6 @@ public class CommonActions {
 		}
 	}
 
-
 	public void clearTextBox(WebElement element){
 		try
 		{
@@ -142,7 +138,6 @@ public class CommonActions {
 		catch (NoSuchElementException e) {
 			e.printStackTrace();	
 		}
-		
 	}
 
 	public void switchToFrame(String frameName) throws InterruptedException{
@@ -171,8 +166,6 @@ public class CommonActions {
 		// TODO Auto-generated method stub
 
 		Assert.assertEquals(actual, expected);
-
-
 	}
 
 	public void waitForPageLoad(WebElement element) {
@@ -188,7 +181,7 @@ public class CommonActions {
 
 	}
 	
-	public void selectOneWayMinPrice1(List <WebElement> element,List <WebElement> bookElement) {
+	public void selectOneWayMinPrice(List <WebElement> element,List <WebElement> bookElement) {
 
 		ListIterator<WebElement> li=element.listIterator();
 
@@ -228,13 +221,13 @@ public class CommonActions {
 		}
 	}
 
-	public void selectOneWayMinPrice(List <WebElement> element,List <WebElement> bookingBtnElement ) {
+	public void selectOneWayMinPrice1(List <WebElement> element,List <WebElement> bookingBtnElement ) {
 
 		ListIterator<WebElement> li=element.listIterator();
 		
 		ArrayList<Integer> prices=new ArrayList<Integer>();
 		
-		List <WebElement> bookBtn=bookingBtnElement;
+		//List <WebElement> bookBtn=bookingBtnElement;
 
 		int smallest = Integer.MAX_VALUE;
 
@@ -279,8 +272,6 @@ public class CommonActions {
 
 		ArrayList<Integer> prices=new ArrayList<Integer>();
 
-		int smallest = Integer.MAX_VALUE;
-
 		while(li.hasNext()){
 
 			WebElement element1= li.next();
@@ -291,18 +282,10 @@ public class CommonActions {
 
 			prices.add(price);
 		}
-
-		System.out.println(prices);
-
-		for(Integer a:prices ) {
-
-			if(smallest > a ) {
-
-				smallest = a;
-			}
-
-		}
-		System.out.println("Smallest number in array is : " +smallest);	
+		List<Integer> slist = prices.stream().sorted().collect(Collectors.toList());
+		
+		int smallest=slist.get(0);
+	
 		for(int price2:prices)
 		{   
 			int i=prices.indexOf(price2);
@@ -324,8 +307,6 @@ public class CommonActions {
 
 		ArrayList<Integer> prices=new ArrayList<Integer>();
 
-		int smallest = Integer.MAX_VALUE;
-
 		while(li.hasNext()){
 
 			WebElement element1= li.next();
@@ -337,17 +318,9 @@ public class CommonActions {
 			prices.add(price);
 		}
 
-		System.out.println(prices);
-
-		for(Integer a:prices ) {
-
-			if(smallest > a ) {
-
-				smallest = a;
-			}
-
-		}
-		System.out.println("Smallest number in array is : " +smallest);
+		List<Integer> slist = prices.stream().sorted().collect(Collectors.toList());
+		
+		int smallest=slist.get(0);
 		
 		for(int price:prices)
 		{   
